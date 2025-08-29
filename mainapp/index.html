@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow - Task Manager</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/all.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="mb-8">
+      <div class="flex justify-between items-center mb-6">
+        <div class="flex-1">
+          <h1 class="text-4xl font-semibold flex items-center gap-3" style="color: var(--text-default);">
+            <i class="fas fa-tasks" style="color: var(--accent-fg);"></i>
+            TaskFlow
+          </h1>
+          <p class="mt-2 text-lg" style="color: var(--text-muted);">Simple task management for productive days</p>
+        </div>
+        <button id="darkModeToggle" class="theme-toggle">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+      
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" style="color: var(--accent-fg);" id="totalTasks">0</div>
+          <div class="stat-label">Total Tasks</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" style="color: var(--success-fg);" id="completedTasks">0</div>
+          <div class="stat-label">Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" style="color: var(--attention-fg);" id="pendingTasks">0</div>
+          <div class="stat-label">Pending</div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Add Task Form -->
+    <section class="github-card p-6 mb-6">
+      <h2 class="text-xl font-semibold mb-4" style="color: var(--text-default);">
+        <i class="fas fa-plus-circle mr-2" style="color: var(--accent-fg);"></i>
+        Add New Task
+      </h2>
+      <form id="taskForm" class="grid gap-4">
+        <div class="grid grid-cols-2 gap-4">
+          <input type="text" id="taskTitle" placeholder="What needs to be done?" class="github-input" required>
+          <select id="taskCategory" class="github-select">
+            <option value="non-selected" selected>Select Kategory</option>
+            <option value="work">🏢 Work</option>
+            <option value="personal">👤 Personal</option>
+            <option value="shopping">🛒 Shopping</option>
+            <option value="health">❤️ Health</option>
+            <option value="other">📝 Other</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+          <select id="taskPriority" class="github-select">
+            <option value="low">Low Priority</option>
+            <option value="medium">Medium Priority</option>
+            <option value="high">High Priority</option>
+          </select>
+          <input type="date" id="taskDueDate" class="github-input">
+          <button type="submit" class="github-btn github-btn-primary">
+            <i class="fas fa-plus mr-2"></i>
+            Add Task
+          </button>
+        </div>
+      </form>
+    </section>
+    
+    <!-- Filters -->
+    <section class="mb-6">
+      <div class="flex flex-wrap gap-2">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="completed">Completed</button>
+        <button class="filter-btn" data-filter="work">
+          <i class="fas fa-briefcase mr-1"></i> Work
+        </button>
+        <button class="filter-btn" data-filter="personal">
+          <i class="fas fa-user mr-1"></i> Personal
+        </button>
+        <button class="filter-btn" data-filter="shopping">
+          <i class="fas fa-shopping-cart mr-1"></i> Shopping
+        </button>
+      </div>
+    </section>
+    
+    <!-- Tasks List -->
+    <main id="tasksList">
+      <!-- Tasks will be dynamically added here -->
+    </main>
+    
+    <!-- Empty State -->
+    <div id="emptyState" class="text-center py-16 hidden">
+      <div class="github-card p-12">
+        <i class="fas fa-clipboard-list text-6xl mb-4" style="color: var(--text-muted);"></i>
+        <p class="text-xl font-medium mb-2" style="color: var(--text-default);">No tasks yet</p>
+        <p style="color: var(--text-muted);">Add your first task to get started with organizing your day</p>
+      </div>
+    </div>
+  </div>
+  
+  <script src="js/app.js"></script>
+</body>
+  </html>
